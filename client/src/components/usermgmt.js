@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+// when view all usernames is selected, calls getAllUsernames function
+// async function to not hold up UI
+// axios allows us to do HTTP request to any URI
 const UserManagement = () => {
   const [usernames, setUsernames] = useState([]);
   const [showUsernames, setShowUsernames] = useState(false);
@@ -83,6 +86,7 @@ const UserManagement = () => {
     
   }
 
+  // axio post - this is resource server needs to expose, will pass through user object
   const addUser = async () => {
     try {
       const response = await axios.post('http://localhost:8000/write/adduser', formData);
