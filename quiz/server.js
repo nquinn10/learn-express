@@ -33,18 +33,18 @@ app.use(
   cors({origin: 'http://localhost:3000'})
 );
 // app.use - before request reaches route, go through middleware function addMsgToRequest
-app.use('/read/usernames', addMsgToRequest);
+app.use('/read/username', addMsgToRequest);
 
 //app.get with URI and map with handler with 2 arguments req and res
-app.get('/read/usernames', (req, res) => {
+app.get('/read/username', (req, res) => {
   let usernames = req.users.map(function(user) {
     return {id: user.id, username: user.username};
   });
   res.send(usernames);
 });
 
-app.use('/read/usernames', addMsgToRequest);
-app.get('/read/usernames/:name', (req, res) => {
+app.use('/read/username', addMsgToRequest);
+app.get('/read/username/:name', (req, res) => {
   let name = req.params.name;
   let users_with_name = req.users.filter(function(user) {
     return user.username === name;
